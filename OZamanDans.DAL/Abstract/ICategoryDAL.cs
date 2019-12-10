@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace OZamanDans.DAL.Abstract
 {
-    interface ICategoryDAL : IEntityRepository<Category>
+    public interface ICategoryDAL : IEntityRepository<Category>
     {
 
     }

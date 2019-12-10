@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace OZamanDans.Core.DataAccess.EntityFramework
 {
-    class EFRepositoryBase<TEntity, TContext> : IEntityRepository<TEntity>
+    public class EFRepositoryBase<TEntity, TContext> : IEntityRepository<TEntity>
         where TEntity : class, IEntity, new()
         where TContext : DbContext, new()
     {

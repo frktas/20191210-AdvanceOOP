@@ -1,4 +1,8 @@
-﻿using System;
+﻿using Ninject;
+using OZamanDans.BLL.Abstract;
+using OZamanDans.BLL.IoC.Ninject;
+using OZamanDans.Winform.UI.Ninject;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,7 +20,16 @@ namespace OZamanDans.Winform.UI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+
+            //note Ninject çalışabilsin diye var 
+            CustomServiceModule module = new CustomServiceModule();
+            IKernel kernel = new StandardKernel(module);
+            kernel.Load<CustomDALModule>();
+
+            IProductService productService = kernel.Get<IProductService>();
+            ICategoryService categoryService = kernel.Get<ICategoryService>();
+
+            Application.Run(new Form1(categoryService,productService));
         }
     }
 }
